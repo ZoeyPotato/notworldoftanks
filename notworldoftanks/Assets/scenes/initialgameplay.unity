@@ -145,10 +145,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558b90984b5481746961d5ed9ba90360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
-  speed: 1
+  movementSpeed: 1
   maxMoveRange: 4
   currentMoved: 0
+  currentHitPoints: 0
+  maxHitPoints: 100
+  cannonSpeed: 1
+  cannonPower: 50
+  currentAngle: 45
+  maxAngle: 90
+  minAngle: -90
 --- !u!65 &75991976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -681,10 +687,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558b90984b5481746961d5ed9ba90360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
-  speed: 1
+  movementSpeed: 1
   maxMoveRange: 4
   currentMoved: 0
+  currentHitPoints: 0
+  maxHitPoints: 100
+  cannonSpeed: 1
+  cannonPower: 50
+  currentAngle: 45
+  maxAngle: 90
+  minAngle: -90
 --- !u!54 &1920852945
 Rigidbody:
   m_ObjectHideFlags: 0

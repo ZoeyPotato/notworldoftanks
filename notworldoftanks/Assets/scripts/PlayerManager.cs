@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
         if (currentPlayer.currentMoved >= currentPlayer.maxMoveRange)
             SwitchCurrentPlayer();
 
-        currentPlayer.PlayerMovement();
+        currentPlayer.UpdatePlayer();
     }
 
     public void SetupPlayers()
