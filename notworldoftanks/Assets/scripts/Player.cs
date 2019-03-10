@@ -12,12 +12,13 @@ public class Player : MonoBehaviour
     public float currentHitPoints = 0;
     public float maxHitPoints = 100;
 
-    public float cannonSpeed = 1;
-    public float cannonPower = 50;
-    public float currentAngle = 45;
-    public float maxAngle = 90;
-    public float minAngle = -90;
-    
+    private Cannon cannon;
+ 
+
+    public void Awake()
+    {
+        cannon = gameObject.GetComponentsInChildren<Cannon>()[0];
+    }
 
     public void UpdatePlayer()
     {
@@ -50,13 +51,11 @@ public class Player : MonoBehaviour
     public void CannonControl()
     {
         if (Input.GetKey("w"))
-        {
-            currentAngle = currentAngle >= maxAngle ? maxAngle : currentAngle + cannonSpeed;
-        }
+            cannon.currentAngle = cannon.currentAngle >= cannon.maxAngle ? cannon.maxAngle : cannon.currentAngle + cannon.cannonSpeed;
             
         if (Input.GetKey("s"))
-        {
-            currentAngle = currentAngle <= minAngle ? minAngle : currentAngle - cannonSpeed;
-        }
+            cannon.currentAngle = cannon.currentAngle <= cannon.minAngle ? cannon.minAngle : cannon.currentAngle - cannon.cannonSpeed;
+
+        cannon.transform.rotation = Quaternion.Euler(0, 0, cannon.currentAngle);
     }
 }
