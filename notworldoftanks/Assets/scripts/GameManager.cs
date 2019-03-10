@@ -1,31 +1,41 @@
 ﻿using UnityEngine;
-
-
-public class GameManager : MonoBehaviour 
+using System.Collections;
+using System.Collections.Generic;      
+    
+public class GameManager : MonoBehaviour
 {
-    Player currentPlayer;
-    bool isRed;
 
+    public static GameManager instance;              //Static instance of GameManager which allows it to be accessed by any other script.
 
-	// Use this for initialization
-	void Start () 
+    //Awake is always called before any Start functions
+    void Awake()
     {
-        //a lot of work to get the player component of the red ball
-        currentPlayer = GameObject.FindGameObjectsWithTag("Red")[0].GetComponent(typeof(Player)) as Player;
-        isRed = true;
+        //Check if instance already exists
+        if (instance == null)
+                
+            //if not, set instance to this
+            instance = this;
+            
+        //If instance already exists and it's not this:
+        else if (instance != this)
+                
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);    
+            
+        //Sets this to not be destroyed when reloading scene
+        DontDestroyOnLoad(gameObject);
+            
+        //Call the InitGame function to initialize the first level 
+        InitGame();
     }
-	
-	// Update is called once per frame
-	void Update () 
-    {
-        currentPlayer.PlayerMovement();
-
-        if (currentPlayer.currentMoved >= currentPlayer.maxMoveRange)
-        {
-            if (!isRed)
-                currentPlayer = GameObject.FindGameObjectsWithTag("Red")[0].GetComponent(typeof(Player)) as Player;
-            else
-                currentPlayer = GameObject.FindGameObjectsWithTag("Blue")[0].GetComponent(typeof(Player)) as Player;
-        }
+        
+    //Initializes the game for each level.
+    void InitGame()
+    { 
+    }
+         
+    //Update is called every frame.
+    void Update()
+    {     
     }
 }

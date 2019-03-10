@@ -3,23 +3,10 @@
 
 public class Player : MonoBehaviour
 {
-    float speed = 1;
+    public int playerId;
+    public float speed = 1;
     public float maxMoveRange = 4;
     public float currentMoved = 0;
-
-
-    // Use this for initialization
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public void PlayerMovement()
     {
