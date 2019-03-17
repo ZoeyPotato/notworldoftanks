@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System;
-
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -15,15 +15,27 @@ public class Player : MonoBehaviour
     public float MaxHitPoints = 100;
 
     private Cannon cannon;
+    private Slider healthBar;
 
-    public AudioClip moveSound1;
+    public AudioClip MoveSound1;
 
     public void Awake()
     {
-        cannon = gameObject.GetComponentsInChildren<Cannon>()[0];
+        cannon = gameObject.GetComponentInChildren<Cannon>();
+        healthBar = gameObject.GetComponentInChildren<Slider>();
     }
 
-    public void UpdatePlayer()
+    public void Update()
+    {
+        healthBar.value = CurHitPoints;
+        if (CurHitPoints <= 0)
+        {
+            //Destroy(gameObject);
+        }
+    }
+
+    // Is only called by the PlayerManager for the Active Player
+    public void UpdateActivePlayer()
     {
         Movement();
         cannon.UpdateCannon();
@@ -47,7 +59,7 @@ public class Player : MonoBehaviour
                 if (FacingRight)
                     SwapLeftRight();
 
-                SoundManager.Instance.PlaySingle(moveSound1);
+                SoundManager.Instance.PlaySingle(MoveSound1);
                 gameObject.transform.position += Vector3.left * amountToMove;
             }
 
@@ -56,7 +68,7 @@ public class Player : MonoBehaviour
                 if (!FacingRight)
                     SwapLeftRight();
 
-                SoundManager.Instance.PlaySingle(moveSound1);
+                SoundManager.Instance.PlaySingle(MoveSound1);
                 gameObject.transform.position += Vector3.right * amountToMove;
             }
         }

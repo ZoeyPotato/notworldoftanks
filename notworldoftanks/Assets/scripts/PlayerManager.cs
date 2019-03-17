@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
         if (curPlayer.TotalMoved >= curPlayer.MaxMoveRange)
             SwitchCurPlayer();
 
-        curPlayer.UpdatePlayer();
+        curPlayer.UpdateActivePlayer();
     }
 
     public void SetupPlayers()
