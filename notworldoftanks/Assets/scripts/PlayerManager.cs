@@ -16,8 +16,6 @@ public class PlayerManager : MonoBehaviour
             SwitchCurPlayer();
 
         curPlayer.UpdatePlayer();
-
-        // TODO: clamp all players to z axis so we don't fall off the front/back
     }
 
     public void SetupPlayers()
@@ -34,8 +32,6 @@ public class PlayerManager : MonoBehaviour
 
         curPlayer = playerQueue.Dequeue();
         playerQueue.Enqueue(curPlayer);
-
-        // GAMEDESIGN: Who should go first? And where do they end up on the queue? Track Delay?
     }
 
 
