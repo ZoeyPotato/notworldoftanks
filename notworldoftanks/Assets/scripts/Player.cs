@@ -4,58 +4,68 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public Guid playerId;
-    public float movementSpeed = 1;
-    public float maxMoveRange = 4;
-    public float currentMoved = 0;
+    public Guid PlayerId;
+    
+    public float MoveSpeed = 1;
+    public float MaxMoveRange = 4;
+    public float TotalMoved = 0;
+    public bool FacingRight = false;
 
-    public float currentHitPoints = 0;
-    public float maxHitPoints = 100;
+    public float CurHitPoints = 0;
+    public float MaxHitPoints = 100;
 
+    private Player player;
     private Cannon cannon;
- 
+
 
     public void Awake()
     {
+        player = gameObject.GetComponents<Player>()[0];
         cannon = gameObject.GetComponentsInChildren<Cannon>()[0];
     }
 
     public void UpdatePlayer()
     {
-        PlayerMovement();
-        CannonControl();
+        movement();
+
+        cannon.UpdateCannon();
     }
 
-    public void PlayerMovement()
-    {
-        if ((Input.GetKey("a") || Input.GetKey("d")) && currentMoved < maxMoveRange)
-        {
-            // GAMEDESIGN: How will we think about movement when it comes to this and the balance of the game?
-            float amountToMove = movementSpeed * Time.deltaTime;
 
-            if (currentMoved + amountToMove >= maxMoveRange)
-            {
-                amountToMove = maxMoveRange - currentMoved;
-                currentMoved = maxMoveRange;
-            }
+    private void movement()
+    {
+        if ((Input.GetKey("a") || Input.GetKey("d")) && TotalMoved < MaxMoveRange)
+        {
+            float amountToMove = MoveSpeed * Time.deltaTime;
+
+            if (TotalMoved + amountToMove >= MaxMoveRange)
+                amountToMove = MaxMoveRange - TotalMoved;
+
+            TotalMoved += amountToMove;
 
             if (Input.GetKey("a"))
-                gameObject.transform.position += Vector3.left * amountToMove;
-            if (Input.GetKey("d"))
-                gameObject.transform.position += Vector3.right * amountToMove;
+            {
+                if (FacingRight)
+                    swapLeftRight();
 
-            currentMoved += amountToMove;
+                gameObject.transform.position += Vector3.left * amountToMove;
+            }
+
+            if (Input.GetKey("d"))
+            {
+                if (!FacingRight)
+                    swapLeftRight();
+
+                gameObject.transform.position += Vector3.right * amountToMove;
+            }
         }
+
+        // GAMEDESIGN: How will we think about movement when it comes to the balance of the game?
     }
 
-    public void CannonControl()
+    private void swapLeftRight()
     {
-        if (Input.GetKey("w"))
-            cannon.currentAngle = cannon.currentAngle >= cannon.maxAngle ? cannon.maxAngle : cannon.currentAngle + cannon.cannonSpeed;
-            
-        if (Input.GetKey("s"))
-            cannon.currentAngle = cannon.currentAngle <= cannon.minAngle ? cannon.minAngle : cannon.currentAngle - cannon.cannonSpeed;
-
-        cannon.transform.rotation = Quaternion.Euler(0, 0, cannon.currentAngle);
+        FacingRight = !FacingRight;
+        player.transform.forward = -player.transform.forward;
     }
 }

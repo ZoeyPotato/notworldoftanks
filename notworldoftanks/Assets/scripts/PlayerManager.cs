@@ -6,16 +6,18 @@ using System.Collections.Generic;
 public class PlayerManager : MonoBehaviour
 {
     private List<Player> players = new List<Player>();             //All players
-    private Player currentPlayer;                                  //Active player
+    private Player curPlayer;                                      //Current active player
     private Queue<Player> playerQueue = new Queue<Player>();       //Keeps a queue of players, whose turn is next
 
 
     void Update()
     {
-        if (currentPlayer.currentMoved >= currentPlayer.maxMoveRange)
-            SwitchCurrentPlayer();
+        if (curPlayer.TotalMoved >= curPlayer.MaxMoveRange)
+            switchCurPlayer();
 
-        currentPlayer.UpdatePlayer();
+        curPlayer.UpdatePlayer();
+
+        // TODO: clamp all players to z axis so we don't fall off the front/back
     }
 
     public void SetupPlayers()
@@ -25,20 +27,22 @@ public class PlayerManager : MonoBehaviour
         foreach (GameObject gameObject in playerObjects)
         {
             Player player = gameObject.GetComponent(typeof(Player)) as Player;
-            player.playerId = Guid.NewGuid();
+            player.PlayerId = Guid.NewGuid();
             players.Add(player);
             playerQueue.Enqueue(player);
         }
 
-        currentPlayer = playerQueue.Dequeue();
-        playerQueue.Enqueue(currentPlayer);
+        curPlayer = playerQueue.Dequeue();
+        playerQueue.Enqueue(curPlayer);
+
+        // GAMEDESIGN: Who should go first? And where do they end up on the queue? Track Delay?
     }
-      
-    // GAMEDESIGN: Who should go first? And where do they end up on the queue? Track Delay?
-    public void SwitchCurrentPlayer()
+
+
+    private void switchCurPlayer()
     {
-        currentPlayer.currentMoved = 0;
-        currentPlayer = playerQueue.Dequeue();
-        playerQueue.Enqueue(currentPlayer);
+        curPlayer.TotalMoved = 0;
+        curPlayer = playerQueue.Dequeue();
+        playerQueue.Enqueue(curPlayer);
     }
 }

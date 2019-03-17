@@ -3,7 +3,7 @@
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;       // Static instance of GameManager which allows it to be accessed by any other script.
+    public static GameManager Instance = null;       // Static instance of GameManager which allows it to be accessed by any other script.
     private PlayerManager playerManager;             // Reference to PlayerManager which manages the players....
     
 
@@ -11,13 +11,13 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         //Check if instance already exists
-        if (instance == null)
+        if (Instance == null)
 
             //if not, set instance to this
-            instance = this;
+            Instance = this;
 
         //If instance already exists and it's not this:
-        else if (instance != this)
+        else if (Instance != this)
 
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
