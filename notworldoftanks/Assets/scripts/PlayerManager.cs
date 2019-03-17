@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         if (curPlayer.TotalMoved >= curPlayer.MaxMoveRange)
-            switchCurPlayer();
+            SwitchCurPlayer();
 
         curPlayer.UpdatePlayer();
 
@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    private void switchCurPlayer()
+    private void SwitchCurPlayer()
     {
         curPlayer.TotalMoved = 0;
         curPlayer = playerQueue.Dequeue();

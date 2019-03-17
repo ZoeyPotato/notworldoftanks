@@ -26,18 +26,19 @@ public class Player : MonoBehaviour
 
     public void UpdatePlayer()
     {
-        movement();
+        Movement();
 
         cannon.UpdateCannon();
     }
 
 
-    private void movement()
+    private void Movement()
     {
-        if ((Input.GetKey("a") || Input.GetKey("d")) && TotalMoved < MaxMoveRange)
+        if (Input.GetKey("a") || Input.GetKey("d"))
         {
             float amountToMove = MoveSpeed * Time.deltaTime;
 
+            // Clamp movement to total allowed movement
             if (TotalMoved + amountToMove >= MaxMoveRange)
                 amountToMove = MaxMoveRange - TotalMoved;
 
@@ -46,7 +47,7 @@ public class Player : MonoBehaviour
             if (Input.GetKey("a"))
             {
                 if (FacingRight)
-                    swapLeftRight();
+                    SwapLeftRight();
 
                 gameObject.transform.position += Vector3.left * amountToMove;
             }
@@ -54,16 +55,14 @@ public class Player : MonoBehaviour
             if (Input.GetKey("d"))
             {
                 if (!FacingRight)
-                    swapLeftRight();
+                    SwapLeftRight();
 
                 gameObject.transform.position += Vector3.right * amountToMove;
             }
         }
-
-        // GAMEDESIGN: How will we think about movement when it comes to the balance of the game?
     }
 
-    private void swapLeftRight()
+    private void SwapLeftRight()
     {
         FacingRight = !FacingRight;
         player.transform.forward = -player.transform.forward;

@@ -19,16 +19,12 @@ public class Cannon : MonoBehaviour
 
     public void UpdateCannon()
     {
-        rotation();
+        Rotation();
     }
 
 
-    private void rotation()
+    private void Rotation()
     {
-        // REFACTOR: do we like doing rotation here in the cannon class or move back to player?
-
-        // TODO: when we hit the max or min angle the cannon SHOULD NOT stop rotating
-
         if (Input.GetKey("w") || Input.GetKey("s"))
         {
             float amountToRotate = RotateSpeed * Time.deltaTime;
