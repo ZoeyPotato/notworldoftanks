@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float TotalMoved = 0;
     public bool FacingRight = false;
 
-    public float CurHitPoints = 0;
+    public float CurHitPoints = 100;
     public float MaxHitPoints = 100;
 
     private Player player;

@@ -3,13 +3,14 @@
 
 public class Loader : MonoBehaviour
 {
-    public GameManager GameManager;          //GameManager prefab to instantiate.
-
+    public GameManager GameManager;
+    public SoundManager SoundManager;
 
     void Awake()
     {
-        //Check if a GameManager has already been assigned to static variable GameManager.instance or if it's still null
         if (GameManager.Instance == null)
             Instantiate(GameManager);
+        if (SoundManager.Instance == null)
+            Instantiate(SoundManager);
     }
 }
