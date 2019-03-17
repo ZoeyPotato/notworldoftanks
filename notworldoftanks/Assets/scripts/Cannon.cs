@@ -12,6 +12,8 @@ public class Cannon : MonoBehaviour
     public GameObject projectile;
     public GameObject projectileSpawner;
 
+    public AudioClip fireSound1;
+
     public void UpdateCannon()
     {
         Rotation();
@@ -48,6 +50,7 @@ public class Cannon : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1"))
         {
+            SoundManager.Instance.PlaySingle(fireSound1);
             Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation);
         }
     }

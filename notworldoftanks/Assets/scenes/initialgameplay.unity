@@ -211,6 +211,7 @@ MonoBehaviour:
   FacingRight: 0
   CurHitPoints: 0
   MaxHitPoints: 100
+  moveSound1: {fileID: 8300000, guid: 8f21b10d19100a14fbdcf4c56c2f36eb, type: 3}
 --- !u!65 &75991976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1354,6 +1355,7 @@ MonoBehaviour:
   projectile: {fileID: 3292857380873632292, guid: 6c869d1560dc5164ba4c94b4f089e637,
     type: 3}
   projectileSpawner: {fileID: 67210804}
+  fireSound1: {fileID: 8300000, guid: 66f2ff4978913c84db7470090edc48ca, type: 3}
 --- !u!1 &1213366343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,6 +1515,7 @@ MonoBehaviour:
   projectile: {fileID: 3292857380873632292, guid: 6c869d1560dc5164ba4c94b4f089e637,
     type: 3}
   projectileSpawner: {fileID: 49819752}
+  fireSound1: {fileID: 8300000, guid: 66f2ff4978913c84db7470090edc48ca, type: 3}
 --- !u!1 &1371128061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,6 +1567,7 @@ MonoBehaviour:
   projectile: {fileID: 3292857380873632292, guid: 6c869d1560dc5164ba4c94b4f089e637,
     type: 3}
   projectileSpawner: {fileID: 1771959332}
+  fireSound1: {fileID: 8300000, guid: 66f2ff4978913c84db7470090edc48ca, type: 3}
 --- !u!1 &1452300608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1619,7 @@ MonoBehaviour:
   projectile: {fileID: 3292857380873632292, guid: 6c869d1560dc5164ba4c94b4f089e637,
     type: 3}
   projectileSpawner: {fileID: 216397535}
+  fireSound1: {fileID: 8300000, guid: 66f2ff4978913c84db7470090edc48ca, type: 3}
 --- !u!1 &1555421224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1741,7 @@ MonoBehaviour:
   FacingRight: 1
   CurHitPoints: 0
   MaxHitPoints: 100
+  moveSound1: {fileID: 8300000, guid: 8f21b10d19100a14fbdcf4c56c2f36eb, type: 3}
 --- !u!65 &1628874321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2076,6 +2082,7 @@ MonoBehaviour:
   FacingRight: 1
   CurHitPoints: 0
   MaxHitPoints: 100
+  moveSound1: {fileID: 8300000, guid: 8f21b10d19100a14fbdcf4c56c2f36eb, type: 3}
 --- !u!54 &1920852945
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2221,6 +2228,7 @@ MonoBehaviour:
   FacingRight: 0
   CurHitPoints: 0
   MaxHitPoints: 100
+  moveSound1: {fileID: 8300000, guid: 8f21b10d19100a14fbdcf4c56c2f36eb, type: 3}
 --- !u!65 &2137500702
 BoxCollider:
   m_ObjectHideFlags: 0

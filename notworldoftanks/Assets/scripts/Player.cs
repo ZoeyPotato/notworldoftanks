@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public Guid PlayerId;
     
-    public float MoveSpeed = 1;
+    public float MoveSpeed = 2;
     public float MaxMoveRange = 4;
     public float TotalMoved = 0;
     public bool FacingRight = false;
@@ -14,13 +14,12 @@ public class Player : MonoBehaviour
     public float CurHitPoints = 100;
     public float MaxHitPoints = 100;
 
-    private Player player;
     private Cannon cannon;
 
+    public AudioClip moveSound1;
 
     public void Awake()
     {
-        player = gameObject.GetComponents<Player>()[0];
         cannon = gameObject.GetComponentsInChildren<Cannon>()[0];
     }
 
@@ -48,6 +47,7 @@ public class Player : MonoBehaviour
                 if (FacingRight)
                     SwapLeftRight();
 
+                SoundManager.Instance.PlaySingle(moveSound1);
                 gameObject.transform.position += Vector3.left * amountToMove;
             }
 
@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
                 if (!FacingRight)
                     SwapLeftRight();
 
+                SoundManager.Instance.PlaySingle(moveSound1);
                 gameObject.transform.position += Vector3.right * amountToMove;
             }
         }
@@ -64,6 +65,6 @@ public class Player : MonoBehaviour
     private void SwapLeftRight()
     {
         FacingRight = !FacingRight;
-        player.transform.forward = -player.transform.forward;
+        gameObject.transform.forward = -gameObject.transform.forward;
     }
 }
