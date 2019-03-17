@@ -9,19 +9,14 @@ public class Cannon : MonoBehaviour
     public float MaxAngle = 90;
     public float MinAngle = -10;
 
-    private Cannon cannon;
-
-
-    public void Awake()
-    {
-        cannon = gameObject.GetComponentsInChildren<Cannon>()[0];
-    }
+    public GameObject projectile;
+    public GameObject projectileSpawner;
 
     public void UpdateCannon()
     {
         Rotation();
+        Fire();
     }
-
 
     private void Rotation()
     {
@@ -35,7 +30,7 @@ public class Cannon : MonoBehaviour
                     amountToRotate = MaxAngle - CurAngle;
 
                 CurAngle += amountToRotate;
-                cannon.transform.Rotate(0, 0, amountToRotate);
+                gameObject.transform.Rotate(0, 0, amountToRotate);
             }
 
             if (Input.GetKey("s"))
@@ -44,8 +39,16 @@ public class Cannon : MonoBehaviour
                     amountToRotate = Math.Abs(MinAngle) - Math.Abs(CurAngle);
 
                 CurAngle -= amountToRotate;
-                cannon.transform.Rotate(0, 0, -amountToRotate);
+                gameObject.transform.Rotate(0, 0, -amountToRotate);
             }
+        }
+    }
+
+    private void Fire()
+    {
+        if (Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation);
         }
     }
 }

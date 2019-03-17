@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
     public void UpdatePlayer()
     {
         Movement();
-
         cannon.UpdateCannon();
     }
 
