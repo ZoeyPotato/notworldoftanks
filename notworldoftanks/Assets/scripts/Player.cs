@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     public Guid PlayerId;
     
-    public float MoveSpeed = 2;
-    public float MaxMoveRange = 4;
+    public float MoveSpeed = 4;
+    public float MaxMoveRange = 8;
     public float TotalMoved = 0;
     public bool FacingRight = false;
 
