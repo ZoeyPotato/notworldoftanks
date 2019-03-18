@@ -14,11 +14,13 @@ public class Cannon : MonoBehaviour
 
     public AudioClip fireSound1;
 
+
     public void UpdateCannon()
     {
         Rotation();
         Fire();
     }
+
 
     private void Rotation()
     {
@@ -29,7 +31,7 @@ public class Cannon : MonoBehaviour
             if (Input.GetKey("w"))
             {
                 if (CurAngle + amountToRotate >= MaxAngle)
-                    amountToRotate = MaxAngle - CurAngle;
+                    amountToRotate = MaxAngle - CurAngle;   // TODO: math.abs this shit too
 
                 CurAngle += amountToRotate;
                 gameObject.transform.Rotate(0, 0, amountToRotate);
@@ -51,6 +53,7 @@ public class Cannon : MonoBehaviour
         if (Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1"))
         {
             SoundManager.Instance.PlaySingle(fireSound1);
+
             Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation);
         }
     }

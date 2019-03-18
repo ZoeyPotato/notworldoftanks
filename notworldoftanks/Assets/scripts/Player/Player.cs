@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using System;
 using UnityEngine.UI;
+using System;
+
 
 public class Player : MonoBehaviour
 {
@@ -14,10 +15,11 @@ public class Player : MonoBehaviour
     public float CurHitPoints = 100;
     public float MaxHitPoints = 100;
 
+    public AudioClip MoveSound1;
+
     private Cannon cannon;
     private Slider healthBar;
 
-    public AudioClip MoveSound1;
 
     public void Awake()
     {
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
         healthBar.value = CurHitPoints;
         if (CurHitPoints <= 0)
         {
+            // TODO: destroy player in playermanager
             //Destroy(gameObject);
         }
     }

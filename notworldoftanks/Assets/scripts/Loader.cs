@@ -6,6 +6,7 @@ public class Loader : MonoBehaviour
     public GameManager GameManager;
     public SoundManager SoundManager;
 
+
     void Awake()
     {
         if (GameManager.Instance == null)
