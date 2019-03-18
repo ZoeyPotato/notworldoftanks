@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     public void Update()
     {
         healthBar.value = CurHitPoints;
+        healthBar.GetComponentInChildren<Text>().text = CurHitPoints + " / " + MaxHitPoints;
         if (CurHitPoints <= 0)
         {
             // TODO: destroy player in playermanager
