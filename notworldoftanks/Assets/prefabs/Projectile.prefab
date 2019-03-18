@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3292857380873632299}
   - component: {fileID: 6268395584205440391}
   - component: {fileID: 3292857380873632293}
+  - component: {fileID: 3280002905658201593}
   - component: {fileID: 701512269040307832}
   - component: {fileID: 8046106568544986418}
-  - component: {fileID: 3280002905658201593}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: PlayerProjectile
@@ -111,6 +111,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3280002905658201593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3292857380873632292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ba99df9dadad74c82c5e44d3ef0572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 15
 --- !u!114 &701512269040307832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,10 +133,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3292857380873632292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b9bcda0230518244a92a0ad19468832, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a7654d142359d94d825af242d1ee3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 15
 --- !u!114 &8046106568544986418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,15 +149,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTimeAlive: 5
---- !u!114 &3280002905658201593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3292857380873632292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fd98b9639f68fb4687d1e77cc474da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

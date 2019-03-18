@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af634b9c3db04d74a921373dca77648d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManager: {fileID: 4652016025576794643, guid: 007d785ec0f5b5a408eac4a8ab05394c,
+  GameManager: {fileID: 6189377621654523784, guid: 007d785ec0f5b5a408eac4a8ab05394c,
     type: 3}
   SoundManager: {fileID: 6271301756805963547, guid: 474e0c8d04cd9ac4a8e79e1605540530,
     type: 3}
@@ -593,11 +593,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c21f8a7ac6c6696409d893c3c0a181b2, type: 2}
-    - target: {fileID: 6600477295691281212, guid: 5516fd668719cb043969fc7a0755ffdd,
-        type: 3}
-      propertyPath: FacingRight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6600477296546647507, guid: 5516fd668719cb043969fc7a0755ffdd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -676,6 +671,16 @@ PrefabInstance:
     - target: {fileID: 7603833526906635237, guid: 5516fd668719cb043969fc7a0755ffdd,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961101695522792165, guid: 5516fd668719cb043969fc7a0755ffdd,
+        type: 3}
+      propertyPath: FacingRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600477295691281212, guid: 5516fd668719cb043969fc7a0755ffdd,
+        type: 3}
+      propertyPath: FacingRight
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -934,11 +939,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 82c7c587019a0b34fb43684a9dfb3d44, type: 2}
-    - target: {fileID: 6600477295691281212, guid: 5516fd668719cb043969fc7a0755ffdd,
-        type: 3}
-      propertyPath: FacingRight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6600477296546647507, guid: 5516fd668719cb043969fc7a0755ffdd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1017,6 +1017,16 @@ PrefabInstance:
     - target: {fileID: 7603833526906635237, guid: 5516fd668719cb043969fc7a0755ffdd,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6961101695522792165, guid: 5516fd668719cb043969fc7a0755ffdd,
+        type: 3}
+      propertyPath: FacingRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600477295691281212, guid: 5516fd668719cb043969fc7a0755ffdd,
+        type: 3}
+      propertyPath: FacingRight
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

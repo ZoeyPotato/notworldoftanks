@@ -381,7 +381,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6600477295363968044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2a034163e1270142833eb748267520f, type: 3}
+  m_Script: {fileID: 11500000, guid: 09f01b41d7f42d74e82b5a7f4b7521d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RotateSpeed: 50
@@ -512,16 +512,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6600477295691281187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 558b90984b5481746961d5ed9ba90360, type: 3}
+  m_Script: {fileID: 11500000, guid: f1d9631535e38f04ea8d6ebc8542e9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 4
   MaxMoveRange: 8
   TotalMoved: 0
-  FacingRight: 0
+  FacingRight: 1
   CurHitPoints: 100
   MaxHitPoints: 100
-  MoveSound1: {fileID: 8300000, guid: 8f21b10d19100a14fbdcf4c56c2f36eb, type: 3}
+  MoveSound1: {fileID: 8300000, guid: 460e65e5b86269045bf8c5e56313b971, type: 3}
 --- !u!1 &6600477296002786227
 GameObject:
   m_ObjectHideFlags: 0
