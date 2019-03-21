@@ -14,14 +14,12 @@ public class GameManager : MonoBehaviour
         else if (Instance != this)
             Destroy(gameObject);
 
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);   // Set the gamemanager to not be destroyed when reloading scenes
 
         playerManager = GetComponent<PlayerManager>();
         InitGame();
     }
 
-    //Initializes the game for each level.
     void InitGame()
     {
         playerManager.SetupPlayers();

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
-    
+
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,10 +12,16 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+        if (curPlayer.IsDead)
+            SwitchCurPlayer();
+
         if (curPlayer.TotalMoved >= curPlayer.MaxMoveRange)
             SwitchCurPlayer();
 
-        curPlayer.UpdateActivePlayer();
+        curPlayer.UpdateCurrentPlayer();
+
+        if (playerQueue.Count == 1)
+            Application.Quit();
     }
 
     public void SetupPlayers()
@@ -39,6 +45,10 @@ public class PlayerManager : MonoBehaviour
     {
         curPlayer.TotalMoved = 0;
         curPlayer = playerQueue.Dequeue();
-        playerQueue.Enqueue(curPlayer);
+
+        if (!curPlayer.IsDead)
+            playerQueue.Enqueue(curPlayer);
+        else
+            SwitchCurPlayer();
     }
 }

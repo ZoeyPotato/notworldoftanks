@@ -3,7 +3,7 @@
 
 public class ProjectileCollision : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player" || other.gameObject.GetComponentInParent<Player>())
         {
@@ -15,6 +15,6 @@ public class ProjectileCollision : MonoBehaviour
             playerHit.CurHitPoints -= 20;
         }
 
-        Destroy(gameObject);   // TODO: when we hit the ground destroy part of it and also explode
+        Destroy(gameObject);
     }
 }

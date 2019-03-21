@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     public float CurHitPoints = 100;
     public float MaxHitPoints = 100;
+    public bool IsDead = false;
 
     public AudioClip MoveSound1;
 
@@ -29,17 +30,11 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        healthBar.value = CurHitPoints;
-        healthBar.GetComponentInChildren<Text>().text = CurHitPoints + " / " + MaxHitPoints;
-        if (CurHitPoints <= 0)
-        {
-            // TODO: destroy player in playermanager
-            //Destroy(gameObject);
-        }
+        HealthUpdate();
     }
 
     // Is only called by the PlayerManager for the Active Player
-    public void UpdateActivePlayer()
+    public void UpdateCurrentPlayer()
     {
         Movement();
         cannon.UpdateCannon();
@@ -77,10 +72,21 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     private void SwapLeftRight()
     {
         FacingRight = !FacingRight;
         gameObject.transform.forward = -gameObject.transform.forward;
+    }
+
+    private void HealthUpdate()
+    {
+        healthBar.value = CurHitPoints;
+        healthBar.GetComponentInChildren<Text>().text = CurHitPoints + " / " + MaxHitPoints;
+
+        if (CurHitPoints <= 0)
+        {
+            IsDead = true;
+            Destroy(gameObject);
+        }
     }
 }
