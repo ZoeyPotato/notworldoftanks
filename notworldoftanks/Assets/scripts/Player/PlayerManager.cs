@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 using System.Collections.Generic;
 
 
@@ -20,7 +19,7 @@ public class PlayerManager : MonoBehaviour
 
         curPlayer.UpdateCurrentPlayer();
 
-        if (playerQueue.Count == 1)
+        if (playerQueue.Count == 1) //TODO: Make work
             Application.Quit();
     }
 
@@ -31,7 +30,6 @@ public class PlayerManager : MonoBehaviour
         foreach (GameObject gameObject in playerObjects)
         {
             Player player = gameObject.GetComponent(typeof(Player)) as Player;
-            player.PlayerId = Guid.NewGuid();
             players.Add(player);
             playerQueue.Enqueue(player);
         }

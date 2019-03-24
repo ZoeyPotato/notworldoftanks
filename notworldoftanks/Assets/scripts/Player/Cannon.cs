@@ -8,6 +8,9 @@ public class Cannon : MonoBehaviour
     public float CurAngle = 0;
     public float MaxAngle = 90;
     public float MinAngle = -10;
+    public float MaximumPower = 1000.0f;
+    public float TimeFirePressed = 0.0f;
+    public float PowerPerSecond = 250.0f;
 
     public GameObject projectile;
     public GameObject projectileSpawner;
@@ -31,7 +34,7 @@ public class Cannon : MonoBehaviour
             if (Input.GetKey("w"))
             {
                 if (CurAngle + amountToRotate >= MaxAngle)
-                    amountToRotate = MaxAngle - CurAngle;   // TODO: math.abs this shit too
+                    amountToRotate = MaxAngle - CurAngle;
 
                 CurAngle += amountToRotate;
                 gameObject.transform.Rotate(0, 0, amountToRotate);
@@ -50,11 +53,22 @@ public class Cannon : MonoBehaviour
 
     private void Fire()
     {
-        if (Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Jump"))
         {
-            SoundManager.Instance.PlaySingle(fireSound1);
+            TimeFirePressed = Time.time;
+            Debug.Log("Start Time: " + TimeFirePressed);
+        }
 
-            Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation);
+        if(Input.GetButtonUp("Jump"))
+        {
+            var timePressed = Time.time - TimeFirePressed;
+            var pressedPower = timePressed * PowerPerSecond;
+            Debug.Log("End Time: " + timePressed + "Power: " + pressedPower);
+
+            GameObject firedProjectile = Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation) as GameObject;
+            firedProjectile.GetComponent<Rigidbody>().AddForce(firedProjectile.transform.up * pressedPower, ForceMode.Impulse);
+            SoundManager.Instance.PlaySingle(fireSound1);
+            TimeFirePressed = 0.0f;
         }
     }
 }

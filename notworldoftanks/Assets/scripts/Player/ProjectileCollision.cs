@@ -12,7 +12,8 @@ public class ProjectileCollision : MonoBehaviour
             if (playerHit == null)
                 playerHit = other.gameObject.GetComponentInParent<Player>();
 
-            playerHit.CurHitPoints -= 20;
+            var hitDmg = Random.Range(10, 20);
+            playerHit.CurHitPoints -= hitDmg;
         }
 
         Destroy(gameObject);

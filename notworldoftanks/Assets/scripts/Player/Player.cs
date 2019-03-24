@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
+        PlayerId = Guid.NewGuid();
         cannon = gameObject.GetComponentInChildren<Cannon>();
         healthBar = gameObject.GetComponentInChildren<Slider>();
     }
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
             SoundManager.Instance.PlaySingle(MoveSound1);
         }
     }
+
     private void SwapLeftRight()
     {
         FacingRight = !FacingRight;
