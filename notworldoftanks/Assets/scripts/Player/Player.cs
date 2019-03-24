@@ -58,7 +58,6 @@ public class Player : MonoBehaviour
                 if (FacingRight)
                     SwapLeftRight();
 
-                SoundManager.Instance.PlaySingle(MoveSound1);
                 gameObject.transform.position += Vector3.left * amountToMove;
             }
 
@@ -67,9 +66,9 @@ public class Player : MonoBehaviour
                 if (!FacingRight)
                     SwapLeftRight();
 
-                SoundManager.Instance.PlaySingle(MoveSound1);
                 gameObject.transform.position += Vector3.right * amountToMove;
             }
+            SoundManager.Instance.PlaySingle(MoveSound1);
         }
     }
     private void SwapLeftRight()
