@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System;
 
-
 public class Cannon : MonoBehaviour
 {
     public float RotateSpeed = 50;
@@ -61,9 +60,9 @@ public class Cannon : MonoBehaviour
 
         if(Input.GetButtonUp("Jump"))
         {
-            var timePressed = Time.time - TimeFirePressed;
-            var pressedPower = timePressed * PowerPerSecond;
-            Debug.Log("End Time: " + timePressed + "Power: " + pressedPower);
+            float timePressed = Time.time - TimeFirePressed;
+            float pressedPower = timePressed * PowerPerSecond;
+            Debug.Log("Time Pressed in Seconds: " + timePressed + " Power: " + pressedPower);
 
             GameObject firedProjectile = Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation) as GameObject;
             firedProjectile.GetComponent<Rigidbody>().AddForce(firedProjectile.transform.up * pressedPower, ForceMode.Impulse);
