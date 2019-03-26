@@ -470,13 +470,13 @@ MonoBehaviour:
   CurAngle: 0
   MaxAngle: 90
   MinAngle: -10
-  MaximumPower: 1000
-  TimeFirePressed: 0
+  MaxPower: 1000
+  MinPower: 100
   PowerPerSecond: 250
   projectile: {fileID: 3292857380873632292, guid: 6c869d1560dc5164ba4c94b4f089e637,
     type: 3}
   projectileSpawner: {fileID: 6600477296002786227}
-  fireSound1: {fileID: 8300000, guid: 66f2ff4978913c84db7470090edc48ca, type: 3}
+  FireSound: {fileID: 0}
 --- !u!1 &6600477295691281187
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +586,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 48
   m_CollisionDetection: 0
 --- !u!114 &6961101695522792165
 MonoBehaviour:
@@ -607,7 +607,7 @@ MonoBehaviour:
   CurHitPoints: 100
   MaxHitPoints: 100
   IsDead: 0
-  MoveSound1: {fileID: 8300000, guid: 460e65e5b86269045bf8c5e56313b971, type: 3}
+  MoveSound: {fileID: 0}
 --- !u!1 &6600477296002786227
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,11 +34,15 @@ public class Player : MonoBehaviour
         HealthUpdate();
     }
 
-    // Only called by the PlayerManager for the current player
-    public void UpdateCurrentPlayer()
+    public void UpdateCurrentPlayer()   // Only called by the PlayerManager for the current player
     {
         Movement();
         cannon.UpdateCannon();
+    }
+
+    public void LateUpdate()
+    {
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
     }
 
 
