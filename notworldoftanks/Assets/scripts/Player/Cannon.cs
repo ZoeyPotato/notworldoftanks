@@ -63,8 +63,8 @@ public class Cannon : MonoBehaviour
 
         if (Input.GetButtonUp("Jump"))
         {
-            float buttonDownTime = Time.time - fireDownCounter;
-            float firingPower = buttonDownTime * PowerPerSecond;
+            float fireDownTime = Time.time - fireDownCounter;
+            float firingPower = fireDownTime * PowerPerSecond;
             
             // Clamp firing power to within min power and max power
             if (firingPower >= MaxPower)
@@ -73,7 +73,7 @@ public class Cannon : MonoBehaviour
                 firingPower = MinPower;
 
             fireDownCounter = 0.0f;
-            Debug.Log("Fire held down for: " + buttonDownTime + " Firing at power: " + firingPower);
+            Debug.Log("Fire held down for: " + fireDownTime + " Firing at power: " + firingPower);
 
             GameObject firedProjectile = Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation) as GameObject;
             firedProjectile.GetComponent<Rigidbody>().AddForce(firedProjectile.transform.up * firingPower, ForceMode.Impulse);
