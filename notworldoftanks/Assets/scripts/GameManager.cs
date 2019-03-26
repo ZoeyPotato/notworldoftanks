@@ -3,8 +3,8 @@
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance = null;       // Static instance of GameManager which allows it to be accessed by any other script.
-    private PlayerManager playerManager;             // Reference to PlayerManager which manages the players....
+    public static GameManager Instance = null;       // Static instance of GameManager which allows it to be accessed by any other script
+    private PlayerManager playerManager;             // Reference to PlayerManager which manages the players
     
 
     void Awake()
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         else if (Instance != this)
             Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);   // Set the gamemanager to not be destroyed when reloading scenes
+        DontDestroyOnLoad(gameObject);   // Set GameManager to not be destroyed when reloading the scene
 
         playerManager = GetComponent<PlayerManager>();
         InitGame();

@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public float MaxHitPoints = 100;
     public bool IsDead = false;
 
-    public AudioClip MoveSound1;
+    public AudioClip MoveSound;
 
     private Cannon cannon;
     private Slider healthBar;
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         HealthUpdate();
     }
 
-    // Is only called by the PlayerManager for the Active Player
+    // Only called by the PlayerManager for the current player
     public void UpdateCurrentPlayer()
     {
         Movement();
@@ -69,7 +69,8 @@ public class Player : MonoBehaviour
 
                 gameObject.transform.position += Vector3.right * amountToMove;
             }
-            SoundManager.Instance.PlaySingle(MoveSound1);
+
+            SoundManager.Instance.PlaySingle(MoveSound);
         }
     }
 

@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using System;
 
+
 public class Cannon : MonoBehaviour
 {
     public float RotateSpeed = 50;
     public float CurAngle = 0;
     public float MaxAngle = 90;
     public float MinAngle = -10;
-    public float MaximumPower = 1000.0f;
-    public float TimeFirePressed = 0.0f;
+    public float MaxPower = 1000.0f;
+    public float MinPower = 100.0f;
     public float PowerPerSecond = 250.0f;
 
     public GameObject projectile;
     public GameObject projectileSpawner;
 
-    public AudioClip fireSound1;
+    public AudioClip FireSound;
+
+    private float fireDownCounter = 0.0f;   // counts how long the player has held down the fire button
 
 
     public void UpdateCannon()
@@ -33,7 +36,7 @@ public class Cannon : MonoBehaviour
             if (Input.GetKey("w"))
             {
                 if (CurAngle + amountToRotate >= MaxAngle)
-                    amountToRotate = MaxAngle - CurAngle;
+                    amountToRotate = MaxAngle - CurAngle;   // TODO: didn't we need to do abs here or something ewald?
 
                 CurAngle += amountToRotate;
                 gameObject.transform.Rotate(0, 0, amountToRotate);
@@ -54,20 +57,28 @@ public class Cannon : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            TimeFirePressed = Time.time;
-            Debug.Log("Start Time: " + TimeFirePressed);
+            fireDownCounter = Time.time;
+            Debug.Log("Fire down start at: " + fireDownCounter);
         }
 
-        if(Input.GetButtonUp("Jump"))
+        if (Input.GetButtonUp("Jump"))
         {
-            float timePressed = Time.time - TimeFirePressed;
-            float pressedPower = timePressed * PowerPerSecond;
-            Debug.Log("Time Pressed in Seconds: " + timePressed + " Power: " + pressedPower);
+            float buttonDownTime = Time.time - fireDownCounter;
+            float firingPower = buttonDownTime * PowerPerSecond;
+            
+            // Clamp firing power to within min power and max power
+            if (firingPower >= MaxPower)
+                firingPower = MaxPower;
+            if (firingPower < MinPower)
+                firingPower = MinPower;
+
+            fireDownCounter = 0.0f;
+            Debug.Log("Fire held down for: " + buttonDownTime + " Firing at power: " + firingPower);
 
             GameObject firedProjectile = Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation) as GameObject;
-            firedProjectile.GetComponent<Rigidbody>().AddForce(firedProjectile.transform.up * pressedPower, ForceMode.Impulse);
-            SoundManager.Instance.PlaySingle(fireSound1);
-            TimeFirePressed = 0.0f;
+            firedProjectile.GetComponent<Rigidbody>().AddForce(firedProjectile.transform.up * firingPower, ForceMode.Impulse);
+
+            SoundManager.Instance.PlaySingle(FireSound);
         }
     }
 }

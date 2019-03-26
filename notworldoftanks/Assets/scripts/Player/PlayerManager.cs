@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class PlayerManager : MonoBehaviour
 {
-    private List<Player> players = new List<Player>();             //All players
-    private Player curPlayer;                                      //Current active player
-    private Queue<Player> playerQueue = new Queue<Player>();       //Keeps a queue of players, whose turn is next
+    private List<Player> players = new List<Player>();             // All players
+    private Player curPlayer;                                      // Current player actually playing the game!
+    private Queue<Player> playerQueue = new Queue<Player>();       // Keeps a queue of players, whose turn is next
 
 
     void Update()
@@ -19,8 +19,8 @@ public class PlayerManager : MonoBehaviour
 
         curPlayer.UpdateCurrentPlayer();
 
-        if (playerQueue.Count == 1) //TODO: Make work
-            Application.Quit();
+        if (playerQueue.Count == 1)
+            Application.Quit();   // TODO: Make work
     }
 
     public void SetupPlayers()

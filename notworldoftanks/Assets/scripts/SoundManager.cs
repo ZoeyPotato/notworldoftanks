@@ -3,11 +3,11 @@
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance = null;     //Allows other scripts to call functions from SoundManager.             
-    public AudioSource efxSource;                   //Drag a reference to the audio source which will play the sound effects.
-    public AudioSource musicSource;                 //Drag a reference to the audio source which will play the music.
-    public float lowPitchRange = .95f;              //The lowest a sound effect will be randomly pitched.
-    public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
+    public static SoundManager Instance = null;     // Allows other scripts to call functions from SoundManager       
+    public AudioSource efxSource;                   // Drag a reference to the audio source which will play the sound effects
+    public AudioSource musicSource;                 // Drag a reference to the audio source which will play the music
+    public float lowPitchRange = .95f;              // The lowest a sound effect will be randomly pitched
+    public float highPitchRange = 1.05f;            // The highest a sound effect will be randomly pitched
 
 
     void Awake()
@@ -17,8 +17,7 @@ public class SoundManager : MonoBehaviour
         else if (Instance != this)
             Destroy(gameObject);
 
-        //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);   // Set SoundManager to not be destroyed when reloading the scene
     }
 
     public void PlaySingle(AudioClip clip)
@@ -31,7 +30,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    //RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
+    // choose a random audio clip and a random pitch
     public void RandomizeSfx(params AudioClip[] clips)
     {
         int randomIndex = Random.Range(0, clips.Length);
