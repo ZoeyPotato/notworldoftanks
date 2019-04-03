@@ -8,16 +8,16 @@ public class Cannon : MonoBehaviour
     public float CurAngle = 0;
     public float MaxAngle = 90;
     public float MinAngle = -10;
-    public float MaxPower = 1000.0f;
-    public float MinPower = 100.0f;
-    public float PowerPerSecond = 250.0f;
+
+    public float MaxFirePower = 1000.0f;
+    public float MinFirePower = 100.0f;
+    public float FirePowerChargeRate = 250.0f;
 
     public GameObject projectile;
     public GameObject projectileSpawner;
-
     public AudioClip FireSound;
 
-    private float fireDownCounter = 0.0f;   // counts how long the player has held down the fire button
+    private float fireDownCounter = 0.0f;
 
 
     public void UpdateCannon()
@@ -56,29 +56,36 @@ public class Cannon : MonoBehaviour
     private void Fire()
     {
         if (Input.GetButtonDown("Jump"))
-        {
             fireDownCounter = Time.time;
-            Debug.Log("Fire down start at: " + fireDownCounter);
-        }
+        
+        if (Input.GetButton("Jump"))
+            Debug.Log("Charging up: " + FirePower());
 
         if (Input.GetButtonUp("Jump"))
         {
-            float fireDownTime = Time.time - fireDownCounter;
-            float firingPower = fireDownTime * PowerPerSecond;
-            
-            // Clamp firing power to within min power and max power
-            if (firingPower >= MaxPower)
-                firingPower = MaxPower;
-            if (firingPower < MinPower)
-                firingPower = MinPower;
-
-            fireDownCounter = 0.0f;
-            Debug.Log("Fire held down for: " + fireDownTime + " Firing at power: " + firingPower);
+            float firePower = FirePower();
+            Debug.Log("Charged up for: " + (Time.time - fireDownCounter) + " seconds. " + "Fired at power: " + firePower);
 
             GameObject firedProjectile = Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation) as GameObject;
-            firedProjectile.GetComponent<Rigidbody>().AddForce(firedProjectile.transform.up * firingPower, ForceMode.Impulse);
+            firedProjectile.GetComponent<Rigidbody>().AddForce(firedProjectile.transform.up * firePower, ForceMode.Impulse);
 
             SoundManager.Instance.PlaySingle(FireSound);
+
+            fireDownCounter = 0.0f;
         }
+    }
+
+    private float FirePower()
+    {
+        float fireDownTime = Time.time - fireDownCounter;
+
+        float firePower = fireDownTime * FirePowerChargeRate;
+
+        if (firePower > MaxFirePower)   // Clamp firing power to within max and min power
+            firePower = MaxFirePower;
+        if (firePower < MinFirePower)
+            firePower = MinFirePower;
+
+        return firePower;
     }
 }

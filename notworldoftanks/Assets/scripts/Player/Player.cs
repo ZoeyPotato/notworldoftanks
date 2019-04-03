@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
 
     public void LateUpdate()
     {
+        // prevent player movement in the z direction
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
     }
 
