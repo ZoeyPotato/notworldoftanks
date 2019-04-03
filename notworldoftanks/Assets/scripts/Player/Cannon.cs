@@ -13,8 +13,8 @@ public class Cannon : MonoBehaviour
     public float MinFirePower = 100.0f;
     public float FirePowerChargeRate = 250.0f;
 
-    public GameObject projectile;
-    public GameObject projectileSpawner;
+    public GameObject Projectile;
+    public GameObject ProjectileSpawner;
     public AudioClip FireSound;
 
     private float fireDownCounter = 0.0f;
@@ -66,7 +66,7 @@ public class Cannon : MonoBehaviour
             float firePower = this.firePower();
             Debug.Log("Charged up for: " + (Time.time - fireDownCounter) + " seconds. " + "Fired at power: " + firePower);
 
-            GameObject firedProjectile = Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation) as GameObject;
+            GameObject firedProjectile = Instantiate(Projectile, ProjectileSpawner.transform.position, ProjectileSpawner.transform.rotation) as GameObject;
             firedProjectile.GetComponent<Rigidbody>().AddForce(firedProjectile.transform.up * firePower, ForceMode.Impulse);
 
             SoundManager.Instance.PlaySingle(FireSound);

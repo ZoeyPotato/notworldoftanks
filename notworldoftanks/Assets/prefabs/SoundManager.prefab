@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6271301756805963546}
   - component: {fileID: 6271301756805963547}
-  - component: {fileID: 6271301756805963524}
   - component: {fileID: 6271301756805963525}
+  - component: {fileID: 5192258133651426278}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ce2f3ccbea7cd4d99c226f39e7d45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  efxSource: {fileID: 6271301756805963524}
-  musicSource: {fileID: 6271301756805963525}
-  lowPitchRange: 0.95
-  highPitchRange: 1.05
---- !u!82 &6271301756805963524
+  EfxSource: {fileID: 6271301756805963525}
+  MusicSource: {fileID: 5192258133651426278}
+  LowPitchRange: 0.95
+  HighPitchRange: 1.05
+--- !u!82 &6271301756805963525
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,7 +61,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -145,7 +145,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &6271301756805963525
+--- !u!82 &5192258133651426278
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,7 +155,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bc9400fc9fda7f943a1bc90cd6b1debc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 57bba085779e12e4abcca81fbc36fa5e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1

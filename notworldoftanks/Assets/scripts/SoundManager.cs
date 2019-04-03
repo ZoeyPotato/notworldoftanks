@@ -32,7 +32,8 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void RandomizeSfx(params AudioClip[] clips)   // choose a random audio clip and a random pitch
+    // choose a random audio clip and a random pitch
+    public void RandomizeSfx(params AudioClip[] clips)
     {
         int randomIndex = Random.Range(0, clips.Length);
         float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
