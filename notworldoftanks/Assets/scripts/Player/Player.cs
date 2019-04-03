@@ -31,12 +31,12 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        HealthUpdate();
+        healthUpdate();
     }
 
     public void UpdateCurrentPlayer()   // Only called by the PlayerManager for the current player
     {
-        Movement();
+        movement();
         cannon.UpdateCannon();
     }
 
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     }
 
 
-    private void Movement()
+    private void movement()
     {
         if (Input.GetKey("a") || Input.GetKey("d"))
         {
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
             if (Input.GetKey("a"))
             {
                 if (FacingRight)
-                    SwapLeftRight();
+                    swapLeftRight();
 
                 gameObject.transform.position += Vector3.left * amountToMove;
             }
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
             if (Input.GetKey("d"))
             {
                 if (!FacingRight)
-                    SwapLeftRight();
+                    swapLeftRight();
 
                 gameObject.transform.position += Vector3.right * amountToMove;
             }
@@ -79,13 +79,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void SwapLeftRight()
+    private void swapLeftRight()
     {
         FacingRight = !FacingRight;
         gameObject.transform.forward = -gameObject.transform.forward;
     }
 
-    private void HealthUpdate()
+    private void healthUpdate()
     {
         healthBar.value = CurHitPoints;
         healthBar.GetComponentInChildren<Text>().text = CurHitPoints + " / " + MaxHitPoints;

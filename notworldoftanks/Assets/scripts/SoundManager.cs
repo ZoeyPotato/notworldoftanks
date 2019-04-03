@@ -4,10 +4,12 @@
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance = null;     // Allows other scripts to call functions from SoundManager       
-    public AudioSource efxSource;                   // Drag a reference to the audio source which will play the sound effects
-    public AudioSource musicSource;                 // Drag a reference to the audio source which will play the music
-    public float lowPitchRange = .95f;              // The lowest a sound effect will be randomly pitched
-    public float highPitchRange = 1.05f;            // The highest a sound effect will be randomly pitched
+
+    public AudioSource EfxSource;                   // Drag a reference to the audio source which will play the sound effects
+    public AudioSource MusicSource;                 // Drag a reference to the audio source which will play the music
+
+    public float LowPitchRange = .95f;              // The lowest a sound effect will be randomly pitched
+    public float HighPitchRange = 1.05f;            // The highest a sound effect will be randomly pitched
 
 
     void Awake()
@@ -22,23 +24,22 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySingle(AudioClip clip)
     {
-        if(!efxSource.isPlaying)
+        if(!EfxSource.isPlaying)
         {
-            efxSource.clip = clip;
+            EfxSource.clip = clip;
 
-            efxSource.Play();
+            EfxSource.Play();
         }
     }
 
-    // choose a random audio clip and a random pitch
-    public void RandomizeSfx(params AudioClip[] clips)
+    public void RandomizeSfx(params AudioClip[] clips)   // choose a random audio clip and a random pitch
     {
         int randomIndex = Random.Range(0, clips.Length);
-        float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+        float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
 
-        efxSource.pitch = randomPitch;
-        efxSource.clip = clips[randomIndex];
+        EfxSource.pitch = randomPitch;
+        EfxSource.clip = clips[randomIndex];
 
-        efxSource.Play();
+        EfxSource.Play();
     }
 }

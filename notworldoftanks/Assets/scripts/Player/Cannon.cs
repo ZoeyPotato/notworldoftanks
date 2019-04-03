@@ -22,12 +22,12 @@ public class Cannon : MonoBehaviour
 
     public void UpdateCannon()
     {
-        Rotation();
-        Fire();
+        rotation();
+        fire();
     }
 
 
-    private void Rotation()
+    private void rotation()
     {
         if (Input.GetKey("w") || Input.GetKey("s"))
         {
@@ -53,17 +53,17 @@ public class Cannon : MonoBehaviour
         }
     }
 
-    private void Fire()
+    private void fire()
     {
         if (Input.GetButtonDown("Jump"))
             fireDownCounter = Time.time;
         
         if (Input.GetButton("Jump"))
-            Debug.Log("Charging up: " + FirePower());
+            Debug.Log("Charging up: " + firePower());
 
         if (Input.GetButtonUp("Jump"))
         {
-            float firePower = FirePower();
+            float firePower = this.firePower();
             Debug.Log("Charged up for: " + (Time.time - fireDownCounter) + " seconds. " + "Fired at power: " + firePower);
 
             GameObject firedProjectile = Instantiate(projectile, projectileSpawner.transform.position, projectileSpawner.transform.rotation) as GameObject;
@@ -75,7 +75,7 @@ public class Cannon : MonoBehaviour
         }
     }
 
-    private float FirePower()
+    private float firePower()
     {
         float fireDownTime = Time.time - fireDownCounter;
 

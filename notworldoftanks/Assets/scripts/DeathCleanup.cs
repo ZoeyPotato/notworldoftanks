@@ -3,7 +3,8 @@
 
 public class DeathCleanup : MonoBehaviour
 {
-    public float maxTimeAlive = 5.0f;
+    public float MaxTimeAlive = 5.0f;
+
     private float timeAlive = 0.0f;
 
 
@@ -11,7 +12,7 @@ public class DeathCleanup : MonoBehaviour
     {
         timeAlive += Time.deltaTime;
 
-        if (timeAlive >= maxTimeAlive)
+        if (timeAlive >= MaxTimeAlive)
             Destroy(gameObject);
     }
 }

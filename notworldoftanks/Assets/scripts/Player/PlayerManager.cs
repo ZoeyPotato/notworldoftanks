@@ -12,10 +12,10 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         if (curPlayer.IsDead)
-            SwitchCurPlayer();
+            switchCurPlayer();
 
         if (curPlayer.TotalMoved >= curPlayer.MaxMoveRange)
-            SwitchCurPlayer();
+            switchCurPlayer();
 
         curPlayer.UpdateCurrentPlayer();
 
@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    private void SwitchCurPlayer()
+    private void switchCurPlayer()
     {
         curPlayer.TotalMoved = 0;
         curPlayer = playerQueue.Dequeue();
@@ -47,6 +47,6 @@ public class PlayerManager : MonoBehaviour
         if (!curPlayer.IsDead)
             playerQueue.Enqueue(curPlayer);
         else
-            SwitchCurPlayer();
+            switchCurPlayer();
     }
 }

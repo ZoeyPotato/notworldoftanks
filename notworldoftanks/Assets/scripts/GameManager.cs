@@ -4,6 +4,7 @@
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;       // Static instance of GameManager which allows it to be accessed by any other script
+
     private PlayerManager playerManager;             // Reference to PlayerManager which manages the players
     
 
